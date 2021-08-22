@@ -15,13 +15,13 @@
           <a href="#" id=30900580 onclick="setRun(30900580);">Campus Loop</a>
           <br/>
           <span id="i">1.8 miles, paved surfaces</span>
-          <p/>
-
-          <a href="#" id="Workout Loopscont" onclick="showhide('Workout Loops');" style="color:black">&#9654; <b>Workout Loops</b></a>
+          <p></p>
+          <button type="button" class="collapsible">Workout Loops
           <br/>
-          <span id="i">0.55 - 1.2 miles, suitable for workouts</span>
-          <p/>
-          <div id="Workout Loops" style="display:none;padding-left: 2em;text-indent: -2em;">
+          <span id="i">0.55 - 1.2 miles, suitable for workouts</span> </button>
+
+          <div class = "content" id="Workout Loops" style="display:none;padding-left: 2em;text-indent: -2em;">
+            <p/>
             <div></div>
             <a href="#" id=30947084 onclick="setRun(30947084);">Hill Loop</a>
             <br/>
@@ -31,7 +31,7 @@
             <div></div>
             <a href="#" id=30947091 onclick="setRun(30947091);">Lombardy Loop</a>
             <br/>
-            <span id="i">0.85 miles, paved surfaces, 0.65 miles from campus</span>
+            <span id="i">0.85 miles, paved surfaces, ankle twisting hazards, 0.65 miles from campus</span>
             <p/>
 
             <div></div>
@@ -53,13 +53,13 @@
             <p/>
 
           </div>
-          <p/>
 
-          <a href="#" id="Gene Loopcont" onclick="showhide('Gene Loop');" style="color:black">&#9654; <b>Gene Loop</b></a>
+          <p></p>
+          <button type="button" class="collapsible"><b>Gene Loops</b>
           <br/>
-          <span id="i">5.6 - 7.4 miles</span>
-          <p/>
-          <div id="Gene Loop" style="display:none;padding-left: 2em;text-indent: -2em;">
+          <span id="i">5.6 - 7.4 miles</span> </button>
+          <div class = "content" id="Gene Loop" style="display:none;padding-left: 2em;text-indent: -2em;">
+            <p/>
             <div></div>
             <a href="#" id=30901083 onclick="setRun(30901083);">Gene Loop</a>
             <br/>
@@ -78,14 +78,14 @@
             <span id="i">7.4 miles, paved surfaces</span>
             <p/>
           </div>
-          <p/>
 
-          <a href="#" id="Huntingtoncont" onclick="showhide('Huntington');" style="color:black">&#9654; <b>Huntington</b></a>
+          <p></p>
+          <button type="button" class="collapsible"><b>Huntington</b>
           <br/>
-          <span id="i">5.0 - 10.8 miles</span>
-          <p/>
-          <div id="Huntington" style="display:none;padding-left: 2em;text-indent: -2em;">
+          <span id="i">5.0 - 10.8 miles</span></button>
 
+          <div class = "content" id="Huntington" style="display:none;padding-left: 2em;text-indent: -2em;">
+            <p/>
             <div></div>
             <a href="#" id=30901172 onclick="setRun(30901172);">Huntington A</a>
             <br/>
@@ -101,7 +101,7 @@
             <div></div>
             <a href="#" id=34183483 onclick="setRun(34183483);">Loop-De-Loop</a>
             <br/>
-            <span id="i">7.2 miles, paved/grass surfaces, loop-de-loop (!)</span>
+            <span id="i">7.2 miles, paved/grass surfaces, loop-de-loop (!!!)</span>
             <p/>
 
             <div></div>
@@ -123,13 +123,14 @@
             <p/>
 
           </div>
-          <p/>
 
-          <a href="#" id="Arroyocont" onclick="showhide('Arroyo');" style="color:black">&#9654; <b>Arroyo</b></a>
+          <p></p>
+          <button type="button" class="collapsible"><b>Arroyo</b>
           <br/>
-          <span id="i">7.8 - 11.6 miles</span>
-          <p/>
-          <div id="Arroyo" style="display:none;padding-left: 2em;text-indent: -2em;">
+          <span id="i">7.8 - 11.6 miles</span></button>
+
+          <div class = "content" id="Arroyo" style="display:none;padding-left: 2em;text-indent: -2em;">
+            <p/>
             <div></div>
             <a href="#" id=30901917 onclick="setRun(30901917);">Lower</a>
             <br/>
@@ -202,14 +203,32 @@
       </div>
     </div>
     <script type="text/javascript">
-      var curBold;
-      function toggle_visibility(id) {
-         var e = document.getElementById(id);
-         if(e.style.display == 'block')
-            e.style.display = 'none';
-         else
-            e.style.display = 'block';
+      // init the collapsible things per https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
       }
+
+      // end init collapsible things
+
+      var curBold;
+      //function toggle_visibility(id) {
+      //   var e = document.getElementById(id);
+      //   if(e.style.display == 'block')
+      //      e.style.display = 'none';
+      //   else
+      //      e.style.display = 'block';
+      //}
       function setRun(num) {
         var link = "https://ridewithgps.com/embeds?type=route&id=" + num + "&sampleGraph=true";
         document.getElementById("frame").src = link;
